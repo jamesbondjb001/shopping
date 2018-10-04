@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"(click)="onSelect('home')" >
+  <!-- <a class="navbar-brand" href="#" (click)="onSelect('home')" > -->
+      <a class="navbar-brand" href="#">
     <img src="./assets/images/diba.png" height="100" width="150"/>
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,11 +18,19 @@
       <li class="nav-item">
         <a class="nav-link" href="#" (click)="onSelect('tran')"><h5>View Transactions</h5></a>
       </li>
-
-
-       <li class="nav-item "  >
-       Welcome , {{ user.name }}
-      </li> 
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-user-circle fa-2x" ></i></a>
+              
+              <!-- <h5>Mr. {{ user.name.firstName }}</h5>  -->
+          <div class="dropdown-menu">
+            <p class="dropdown-item" ><strong>{{ user.name.firstName }} {{ user.name.lastName }}</strong></p>
+            <a class="dropdown-item" href="#">Dashboard</a>
+            <a class="dropdown-item" href="#" (click)="onSelect('login')">Logout</a>
+           <!-- <div role="separator" class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#three">three</a>  -->
+          </div>
+        </li>
       <!-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown

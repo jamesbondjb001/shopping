@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { first } from 'rxjs/operators';
@@ -11,19 +11,24 @@ import { first } from 'rxjs/operators';
 
 export class LoginComponent implements OnInit {
 
+  @Output() loginFlag = new EventEmitter<Boolean>();
 
-  users =[{"id":1,
-          "name":"Atul Patel",
-        "emailId":"atul@gmail.com",
-      "password":"12345"},
-      {"id":2,
-      "name":"Kunal",
-    "emailId":"kunal@gmail.com",
-  "password":"12345"},
-  {"id":3,
-  "name":"Abhijit",
-"emailId":"abhijit@gmail.com",
-"password":"12345"}];
+  users =[{ "id":1,
+            "name":{"firstName":"Atul",
+                    "lastName":"Patel"},
+            "username":"atul@gmail.com",
+            "password":"12345"},
+          {"id":2,
+          "name":{"firstName":"Kunal",
+                  "lastName":"Kumar"},
+            "username":"kunal@gmail.com",
+            "password":"12345"},
+          {"id":3,
+          "name":{"firstName":"Abhijit",
+                  "lastName":"Kumar"},
+            "username":"abhijit@gmail.com",
+            "password":"12345"}
+      ];
 
 loginForm: FormGroup;
 loading = false;
@@ -60,11 +65,15 @@ get f() { return this.loginForm.controls; }
     // }
 
     this.users.forEach(user =>{
-      if((user.emailId==this.f.username.value) &&(user.password ==this.f.password.value)){
-        alert("login success");
-
+      if((user.username==this.f.username.value) &&(user.password ==this.f.password.value)){
+        //alert("login success");
+        this.loginFlag.emit(true);
         localStorage.setItem("currentUser", JSON.stringify(user))
+        
       }
+      // else{
+      //   this.loginFlag.emit(false);
+      // }
     })
   }
   logout() {
