@@ -3,6 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
+      <app-login *ngIf="navMenuLoaded==='login'"></app-login>
       <app-categories *ngIf="navMenuLoaded ==='home'"></app-categories>
       <app-sell-products *ngIf="navMenuLoaded ==='sell'"></app-sell-products>
       <app-transactions-hist *ngIf="navMenuLoaded ==='tran'"></app-transactions-hist>

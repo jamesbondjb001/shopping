@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  navMenuLoaded = 'home';
+  navMenuLoaded = 'login';
 
   onNavigate(navMenuApp : string){
     console.log(navMenuApp);

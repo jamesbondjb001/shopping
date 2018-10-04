@@ -12,4 +12,6 @@ export class HeaderComponent {
     console.log(navMenu);
     this.navMenuSelected.emit(navMenu);
   }
+
+   user = JSON.parse(localStorage.getItem('currentUser'))
 }
